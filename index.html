@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farejador | Rastreamento e gestão de frotas com atendimento humano</title>
+  <meta name="description" content="Rastreamento em tempo real, gestão de motoristas, histórico de trajetos, roteirização, telemetria e videotelemetria para empresas com 3 a 100 veículos. Atendimento humanizado e personalizado.">
+  <meta name="theme-color" content="#0B0B0C">
+  <meta property="og:title" content="Farejador | Gestão de frotas com faro de especialista">
+  <meta property="og:description" content="Controle total da sua frota, com atendimento de gente de verdade. Para empresas de 3 a 100 veículos.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/img/farejador-simbolo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- SVG sprite de ícones -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-driver" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 3v5h5M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4.9 19a9 9 0 1 1 14.2 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="m12 14 4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="14" r="1.6" fill="currentColor"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 10.5 6-3.5v10l-6-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-5A8 8 0 1 1 21 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1.4 1.4 0 0 0 2-2M14 14l2.5 2.5a1.4 1.4 0 0 0 2-2L15 11M3 8l4-3 5 2 3-1 6 3v6l-2 1M3 8v7l2 1 5 4a1.4 1.4 0 0 0 2-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-whats" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.4A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.1.8.83-3-.2-.31a8.2 8.2 0 1 1 6.97 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.13-.16.24-.64.8-.78.96-.14.17-.29.19-.53.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.34.08-.16.04-.3-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.86 2.04 4.76 4.76 0 0 0 1 2.53 10.9 10.9 0 0 0 4.17 3.68c1.55.67 2.16.73 2.93.61.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.15-1.17-.06-.1-.22-.17-.47-.29Z"/></symbol>
+      <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="6" cy="17.5" r="2" fill="#fff" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="17.5" r="2" fill="#fff" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2ZM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+      <symbol id="i-fuel" viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h12M4 10h10M14 8l3 2v8a1.5 1.5 0 0 0 3 0V8l-3-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a href="#topo" class="brand" aria-label="Farejador, voltar ao topo">
+        <img src="assets/img/farejador-simbolo-branco.svg" alt="" width="38" height="40">
+        <span>Farejador</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#solucoes">Soluções</a>
+        <a href="#videotelemetria">Videotelemetria</a>
+        <a href="#atendimento">Atendimento</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#contato" class="btn btn--primary nav__cta">Fale com um especialista</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow eyebrow--dark"><span class="dot"></span> Rastreamento e gestão de frotas</span>
+          <h1>Sua frota no faro de quem <em>entende</em> do assunto.</h1>
+          <p class="lead">Localização em tempo real, gestão de motoristas, telemetria e videotelemetria numa plataforma simples, com um time que te atende pelo nome. Feito para empresas com <strong>3 a 100 veículos</strong>.</p>
+          <div class="hero__ctas">
+            <a href="#contato" class="btn btn--primary btn--lg">Quero uma demonstração <svg><use href="#i-arrow"/></svg></a>
+            <a href="#" class="btn btn--ghost btn--lg js-whats"><svg><use href="#i-whats"/></svg> Chamar no WhatsApp</a>
+          </div>
+          <ul class="hero__checks">
+            <li><svg><use href="#i-check"/></svg> Atendimento humanizado</li>
+            <li><svg><use href="#i-check"/></svg> Implantação acompanhada</li>
+            <li><svg><use href="#i-check"/></svg> Plataforma web + app</li>
+          </ul>
+        </div>
+
+        <!-- Mockup da plataforma -->
+        <div class="hero__visual" aria-label="Ilustração da plataforma Farejador">
+          <div class="dash">
+            <div class="dash__bar">
+              <span></span><span></span><span></span>
+              <div class="dash__url">app.farejador.com.br</div>
+            </div>
+            <div class="dash__body">
+              <aside class="dash__side">
+                <div class="dash__title">Frota agora</div>
+                <div class="veh is-on"><i></i><div><b>ABC-1D23</b><small>Em movimento · 62 km/h</small></div></div>
+                <div class="veh is-on"><i></i><div><b>FRJ-4E56</b><small>Em movimento · 48 km/h</small></div></div>
+                <div class="veh is-idle"><i></i><div><b>LBO-7F89</b><small>Parado · 12 min</small></div></div>
+                <div class="veh is-off"><i></i><div><b>QWE-2G34</b><small>Desligado</small></div></div>
+                <div class="veh is-on"><i></i><div><b>RTY-5H67</b><small>Em movimento · 71 km/h</small></div></div>
+              </aside>
+              <div class="dash__map">
+                <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <rect width="400" height="300" fill="#1B1B1E"/>
+                  <g stroke="#2A2A2F" stroke-width="10" fill="none" stroke-linecap="round">
+                    <path d="M-10 70 H410"/><path d="M-10 190 C120 170 200 230 410 200"/><path d="M90 -10 V310"/><path d="M260 -10 C240 100 300 200 280 310"/><path d="M-10 270 L180 130 L410 120"/>
+                  </g>
+                  <g stroke="#232327" stroke-width="4" fill="none">
+                    <path d="M-10 30 H410"/><path d="M-10 130 H410"/><path d="M170 -10 V310"/><path d="M340 -10 V310"/><path d="M40 -10 V310"/>
+                  </g>
+                  <path class="route" d="M40 268 L180 130 L262 125 C255 170 270 190 268 212 L340 205" fill="none" stroke="#FF6A13" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="40" cy="268" r="6" fill="#0B0B0C" stroke="#FF6A13" stroke-width="3"/>
+                  <g class="pin-car"><circle cx="340" cy="205" r="16" fill="#FF6A13" opacity=".25"/><circle cx="340" cy="205" r="8" fill="#FF6A13" stroke="#fff" stroke-width="3"/></g>
+                  <circle cx="90" cy="70" r="6" fill="#3DDC84" stroke="#fff" stroke-width="2"/>
+                  <circle cx="300" cy="60" r="6" fill="#3DDC84" stroke="#fff" stroke-width="2"/>
+                  <circle cx="160" cy="230" r="6" fill="#FFC53D" stroke="#fff" stroke-width="2"/>
+                  <circle cx="370" cy="150" r="6" fill="#8A8A93" stroke="#fff" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="float float--alert">
+            <span class="float__icon float__icon--orange"><svg><use href="#i-bell"/></svg></span>
+            <div><b>Excesso de velocidade</b><small>FRJ-4E56 · 92 km/h na BR-116</small></div>
+          </div>
+          <div class="float float--score">
+            <div class="score"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#EEE" stroke-width="4"/><circle cx="18" cy="18" r="15" fill="none" stroke="#FF6A13" stroke-width="4" stroke-dasharray="82 100" stroke-linecap="round" transform="rotate(-90 18 18)"/></svg><b>8,7</b></div>
+            <div><b>Nota do motorista</b><small>Carlos M. · semana</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SEGMENTOS ================= -->
+    <section class="strip">
+      <div class="container strip__inner">
+        <p>Sob medida para frotas de <strong>3 a 100 veículos</strong> em qualquer segmento</p>
+        <ul class="chips">
+          <li>Transportadoras</li><li>Distribuidoras</li><li>Prestadores de serviço</li><li>Construção civil</li><li>Agronegócio</li><li>Locadoras</li><li>Vendas externas</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= DOR / BENEFÍCIOS ================= -->
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Por que rastrear</span>
+          <h2>Você sabe onde está cada veículo da sua empresa <em>agora</em>?</h2>
+          <p class="muted">Combustível desviado, rota esticada, motorista acelerando demais, cliente esperando sem previsão. Em frotas pequenas e médias cada veículo pesa no caixa. O Farejador te mostra o que acontece na rua e o que fazer a respeito.</p>
+          <a href="#solucoes" class="link-arrow">Conheça as soluções <svg><use href="#i-arrow"/></svg></a>
+        </div>
+        <ul class="benefits">
+          <li><span class="ic"><svg><use href="#i-fuel"/></svg></span><div><b>Menos gasto com combustível</b><p>Identifique ociosidade, desvios de rota e direção agressiva, que pesam no consumo.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-shield"/></svg></span><div><b>Mais segurança</b><p>Para o motorista, para a carga e para o patrimônio da empresa, com alertas na hora.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-bolt"/></svg></span><div><b>Decisão rápida</b><p>Relatórios claros que mostram o que importa, sem planilha e sem complicação.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-truck"/></svg></span><div><b>Cliente bem atendido</b><p>Previsão de chegada real e prova de visita com histórico completo de trajetos.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= SOLUÇÕES ================= -->
+    <section class="section section--soft" id="solucoes">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Soluções</span>
+          <h2>Tudo o que sua frota precisa, em uma só plataforma</h2>
+          <p class="muted">Do rastreamento básico à videotelemetria avançada. Você contrata o que faz sentido para a sua operação.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="card__ic"><svg><use href="#i-pin"/></svg></span>
+            <h3>Localização em tempo real</h3>
+            <p>Veja todos os veículos no mapa, com status, velocidade e ignição atualizados a cada instante.</p>
+          </article>
+          <article class="card">
+            <span class="card__ic"><svg><use href="#i-driver"/></svg></span>
+            <h3>Gestão de motoristas</h3>
+            <p>Identifique quem dirige cada veículo, acompanhe jornada e comportamento e premie os melhores.</p>
+          </article>
+          <article class="card">
+            <span class="card__ic"><svg><use href="#i-history"/></svg></span>
+            <h3>Histórico de trajetos</h3>
+            <p>Reveja qualquer viagem: onde passou, onde parou, por quanto tempo e em que velocidade.</p>
+          </article>
+          <article class="card">
+            <span class="card__ic"><svg><use href="#i-route"/></svg></span>
+            <h3>Roteirização</h3>
+            <p>Monte as melhores rotas para entregas e visitas, economize quilômetros e cumpra o horário.</p>
+          </article>
+          <article class="card">
+            <span class="card__ic"><svg><use href="#i-gauge"/></svg></span>
+            <h3>Telemetria</h3>
+            <p>Frenagens bruscas, acelerações, curvas, ociosidade e excesso de velocidade viram indicadores.</p>
+          </article>
+          <article class="card card--featured">
+            <span class="card__tag">Avançado</span>
+            <span class="card__ic"><svg><use href="#i-camera"/></svg></span>
+            <h3>Videotelemetria avançada</h3>
+            <p>Câmeras com inteligência embarcada detectam fadiga, distração e uso de celular e enviam o vídeo do evento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOTELEMETRIA ================= -->
+    <section class="section section--dark" id="videotelemetria">
+      <div class="container split split--rev">
+        <div class="cam" aria-label="Ilustração de evento de videotelemetria">
+          <div class="cam__screen">
+            <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B31"/><stop offset="1" stop-color="#121214"/></linearGradient></defs>
+              <rect width="480" height="300" fill="url(#sky)"/>
+              <path d="M0 300 L200 150 H280 L480 300Z" fill="#1E1E22"/>
+              <path d="M240 214 V230 M240 246 V266 M240 284 V300" stroke="#FF6A13" stroke-width="5" stroke-linecap="round"/>
+              <path d="M0 300 L200 150 M480 300 L280 150" stroke="#3A3A40" stroke-width="3"/>
+              <rect x="215" y="170" width="50" height="34" rx="5" fill="#2C2C33" stroke="#FF6A13" stroke-width="2" stroke-dasharray="5 4"/>
+              <text x="240" y="160" text-anchor="middle" font-size="11" fill="#FF6A13" font-family="sans-serif" font-weight="700">VEÍCULO 18 m</text>
+            </svg>
+            <span class="cam__rec"><i></i> REC</span>
+            <span class="cam__meta">CAM 1 · Frontal · 14:32:08</span>
+          </div>
+          <div class="cam__event">
+            <span class="float__icon float__icon--orange"><svg><use href="#i-camera"/></svg></span>
+            <div><b>Distância de segurança</b><small>LBO-7F89 · vídeo de 10 s disponível</small></div>
+            <span class="badge">Novo</span>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow eyebrow--dark">Videotelemetria avançada</span>
+          <h2>Veja o que aconteceu, e não só onde aconteceu.</h2>
+          <p class="muted-dark">Câmeras frontais e de cabine com inteligência artificial identificam comportamentos de risco e enviam o vídeo do evento direto para a plataforma. Assim você protege o motorista, se defende em sinistros e corrige hábitos antes que virem prejuízo.</p>
+          <ul class="ticks">
+            <li><svg><use href="#i-check"/></svg> Detecção de fadiga, sonolência e distração</li>
+            <li><svg><use href="#i-check"/></svg> Alerta de uso de celular e cigarro ao volante</li>
+            <li><svg><use href="#i-check"/></svg> Aviso de colisão e distância de segurança</li>
+            <li><svg><use href="#i-check"/></svg> Vídeos dos eventos salvos para consulta e defesa</li>
+          </ul>
+          <a href="#contato" class="btn btn--primary btn--lg">Quero ver funcionando <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TELEMETRIA / RELATÓRIOS ================= -->
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Telemetria e relatórios</span>
+          <h2>Indicadores que viram economia no fim do mês</h2>
+          <p class="muted">Acompanhe o comportamento de cada motorista e de cada veículo com relatórios prontos e fáceis de entender. Você recebe por e-mail ou consulta no celular.</p>
+          <ul class="ticks ticks--light">
+            <li><svg><use href="#i-check"/></svg> Ranking de motoristas por nota de direção</li>
+            <li><svg><use href="#i-check"/></svg> Tempo de motor ocioso e paradas não programadas</li>
+            <li><svg><use href="#i-check"/></svg> Cercas virtuais com alerta de entrada e saída</li>
+            <li><svg><use href="#i-check"/></svg> Quilometragem para plano de manutenção</li>
+          </ul>
+        </div>
+        <div class="report" aria-label="Ilustração de relatório de telemetria">
+          <div class="report__head"><b>Eventos de direção</b><span>Últimos 7 dias</span></div>
+          <div class="bars">
+            <div style="--h:62%"><span>Seg</span></div>
+            <div style="--h:48%"><span>Ter</span></div>
+            <div style="--h:74%"><span>Qua</span></div>
+            <div style="--h:40%"><span>Qui</span></div>
+            <div style="--h:33%"><span>Sex</span></div>
+            <div style="--h:22%"><span>Sáb</span></div>
+            <div style="--h:15%" class="is-today"><span>Dom</span></div>
+          </div>
+          <div class="report__kpis">
+            <div><small>Frenagens bruscas</small><b>14</b></div>
+            <div><small>Excesso de velocidade</small><b>9</b></div>
+            <div><small>Motor ocioso</small><b>3h12</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ATENDIMENTO ================= -->
+    <section class="section section--orange" id="atendimento">
+      <div class="container">
+        <div class="section__head section__head--light">
+          <span class="eyebrow eyebrow--onorange">Nosso diferencial</span>
+          <h2>Aqui você não é um número de protocolo.</h2>
+          <p>Tecnologia todo mundo tem. O que faz diferença é quem está do outro lado quando você precisa. No Farejador o atendimento é humano, próximo e personalizado para a sua operação.</p>
+        </div>
+        <div class="cards cards--4">
+          <article class="card card--onorange">
+            <span class="card__ic"><svg><use href="#i-handshake"/></svg></span>
+            <h3>Consultor dedicado</h3>
+            <p>Uma pessoa que conhece a sua frota e a sua rotina pelo nome.</p>
+          </article>
+          <article class="card card--onorange">
+            <span class="card__ic"><svg><use href="#i-whats"/></svg></span>
+            <h3>Suporte no WhatsApp</h3>
+            <p>Fale com a gente pelo canal que você já usa, sem URA e sem fila infinita.</p>
+          </article>
+          <article class="card card--onorange">
+            <span class="card__ic"><svg><use href="#i-bolt"/></svg></span>
+            <h3>Implantação acompanhada</h3>
+            <p>Instalação, configuração e treinamento da equipe, do início ao fim.</p>
+          </article>
+          <article class="card card--onorange">
+            <span class="card__ic"><svg><use href="#i-chat"/></svg></span>
+            <h3>Solução sob medida</h3>
+            <p>Montamos o plano de acordo com o tamanho e a necessidade da sua frota.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMO FUNCIONA ================= -->
+    <section class="section" id="como-funciona">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Da conversa à frota rastreada, sem dor de cabeça</h2>
+        </div>
+        <ol class="steps">
+          <li><span class="steps__n">01</span><h3>Diagnóstico</h3><p>Entendemos sua operação, o tamanho da frota e o que você precisa controlar.</p></li>
+          <li><span class="steps__n">02</span><h3>Proposta sob medida</h3><p>Você recebe um plano personalizado, só com o que faz sentido para você.</p></li>
+          <li><span class="steps__n">03</span><h3>Instalação</h3><p>Equipamentos instalados por técnicos, com o mínimo de tempo parado.</p></li>
+          <li><span class="steps__n">04</span><h3>Treinamento e suporte</h3><p>Ensinamos sua equipe a usar a plataforma e seguimos juntos no dia a dia.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= APP ================= -->
+    <section class="section section--soft">
+      <div class="container split split--rev">
+        <div class="phone-wrap">
+          <div class="phone" aria-label="Ilustração do aplicativo Farejador">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="phone__top">
+                <img src="assets/img/farejador-simbolo-branco.svg" alt="" width="24" height="25">
+                <b>Minha frota</b>
+              </div>
+              <div class="phone__stats">
+                <div><b>12</b><small>Em rota</small></div>
+                <div><b>3</b><small>Parados</small></div>
+                <div><b>1</b><small>Alerta</small></div>
+              </div>
+              <div class="phone__map">
+                <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <rect width="200" height="140" fill="#1B1B1E"/>
+                  <g stroke="#2A2A2F" stroke-width="7" fill="none"><path d="M-5 40 H205"/><path d="M60 -5 V145"/><path d="M-5 110 C80 90 120 130 205 100"/><path d="M150 -5 V145"/></g>
+                  <path d="M20 125 L60 80 L150 70" fill="none" stroke="#FF6A13" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="150" cy="70" r="6" fill="#FF6A13" stroke="#fff" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="phone__item"><i class="ok"></i><b>ABC-1D23</b><small>62 km/h</small></div>
+              <div class="phone__item"><i class="warn"></i><b>LBO-7F89</b><small>Parado</small></div>
+              <div class="phone__item"><i class="ok"></i><b>FRJ-4E56</b><small>48 km/h</small></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Aplicativo Farejador</span>
+          <h2>Sua frota inteira na palma da mão</h2>
+          <p class="muted">Acompanhe os veículos, receba alertas e consulte trajetos de onde estiver. Tudo o que está na plataforma web também está no app.</p>
+          <ul class="ticks ticks--light">
+            <li><svg><use href="#i-check"/></svg> Notificações de eventos em tempo real</li>
+            <li><svg><use href="#i-check"/></svg> Compartilhamento de localização com o cliente</li>
+            <li><svg><use href="#i-check"/></svg> Bloqueio remoto do veículo em caso de roubo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div class="section__head section__head--left">
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2>Perguntas que a gente sempre ouve</h2>
+          <p class="muted">Não achou sua dúvida? <a href="#" class="js-whats">Chama a gente no WhatsApp</a>.</p>
+        </div>
+        <div class="faq__list">
+          <details>
+            <summary>Minha frota é pequena. O Farejador vale a pena para mim? <svg><use href="#i-plus"/></svg></summary>
+            <p>Sim. Somos especialistas em frotas de 3 a 100 veículos. Montamos o plano de acordo com o seu tamanho, e o atendimento é tão próximo quanto você precisa.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo leva para começar a rastrear? <svg><use href="#i-plus"/></svg></summary>
+            <p>Depois da proposta aprovada, agendamos a instalação conforme a disponibilidade dos seus veículos. Assim que o equipamento é instalado, o veículo já aparece na plataforma e no app.</p>
+          </details>
+          <details>
+            <summary>Funciona em carros, motos, caminhões e máquinas? <svg><use href="#i-plus"/></svg></summary>
+            <p>Sim. Temos equipamentos para veículos leves, pesados, motos e máquinas. Indicamos o mais adequado durante o diagnóstico.</p>
+          </details>
+          <details>
+            <summary>Preciso contratar a videotelemetria? <svg><use href="#i-plus"/></svg></summary>
+            <p>Não. A videotelemetria é um módulo avançado e opcional. Você pode começar com rastreamento e telemetria e incluir as câmeras quando fizer sentido.</p>
+          </details>
+          <details>
+            <summary>Como funciona o suporte? <svg><use href="#i-plus"/></svg></summary>
+            <p>Você tem atendimento humanizado pelo WhatsApp e um consultor que conhece a sua operação. Nada de URA ou de protocolo sem resposta.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTATO / LEAD ================= -->
+    <section class="section section--dark cta" id="contato">
+      <div class="container split">
+        <div>
+          <img class="cta__logo" src="assets/img/farejador-simbolo-branco.svg" alt="" width="72" height="75">
+          <h2>Coloque o faro do Farejador na sua frota.</h2>
+          <p class="muted-dark">Conte um pouco sobre a sua operação. Um especialista do nosso time entra em contato para montar uma proposta sob medida, sem compromisso.</p>
+          <ul class="ticks">
+            <li><svg><use href="#i-check"/></svg> Demonstração gratuita da plataforma</li>
+            <li><svg><use href="#i-check"/></svg> Proposta personalizada para o tamanho da sua frota</li>
+            <li><svg><use href="#i-check"/></svg> Resposta rápida, de gente de verdade</li>
+          </ul>
+        </div>
+        <form class="form" id="lead-form" novalidate>
+          <h3>Fale com um especialista</h3>
+          <label>Nome<input name="nome" type="text" autocomplete="name" required placeholder="Seu nome"></label>
+          <label>Empresa<input name="empresa" type="text" autocomplete="organization" required placeholder="Nome da empresa"></label>
+          <label>WhatsApp<input name="whatsapp" type="tel" autocomplete="tel" required placeholder="(00) 00000-0000"></label>
+          <label>Quantos veículos tem a sua frota?
+            <select name="veiculos" required>
+              <option value="" disabled selected>Selecione</option>
+              <option>3 a 10 veículos</option>
+              <option>11 a 30 veículos</option>
+              <option>31 a 60 veículos</option>
+              <option>61 a 100 veículos</option>
+              <option>Mais de 100 veículos</option>
+            </select>
+          </label>
+          <label>Qual solução te interessa?
+            <select name="interesse">
+              <option>Ainda não sei, quero orientação</option>
+              <option>Localização em tempo real</option>
+              <option>Gestão de motoristas</option>
+              <option>Roteirização</option>
+              <option>Telemetria</option>
+              <option>Videotelemetria avançada</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn--primary btn--lg btn--block"><svg><use href="#i-whats"/></svg> Enviar pelo WhatsApp</button>
+          <p class="form__note" role="status" aria-live="polite">Seus dados são usados apenas para entrarmos em contato.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#topo" class="brand"><img src="assets/img/farejador-simbolo-branco.svg" alt="" width="34" height="36"><span>Farejador</span></a>
+        <p>Rastreamento e gestão de frotas com atendimento humanizado para empresas de 3 a 100 veículos.</p>
+      </div>
+      <div>
+        <h4>Soluções</h4>
+        <a href="#solucoes">Localização em tempo real</a>
+        <a href="#solucoes">Gestão de motoristas</a>
+        <a href="#solucoes">Roteirização</a>
+        <a href="#videotelemetria">Videotelemetria</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <a href="#" class="js-whats">WhatsApp</a>
+        <a href="https://www.instagram.com/appfarejador/" target="_blank" rel="noopener">Instagram @appfarejador</a>
+        <a href="#contato">Solicitar proposta</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="ano">2026</span> Farejador. Todos os direitos reservados.</span>
+      <a href="https://www.instagram.com/appfarejador/" target="_blank" rel="noopener" aria-label="Instagram do Farejador" class="footer__social"><svg><use href="#i-insta"/></svg></a>
+    </div>
+  </footer>
+
+  <a href="#" class="whats-float js-whats" aria-label="Falar no WhatsApp"><svg><use href="#i-whats"/></svg></a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
