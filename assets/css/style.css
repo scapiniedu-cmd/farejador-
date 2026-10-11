@@ -484,3 +484,21 @@ mark { background: var(--orange); color: var(--white); padding: 0 .25em; border-
   .moto-promo .btn { width: 100%; white-space: normal; }
   .vehicle__badge { top: 10px; right: 10px; font-size: .68rem; }
 }
+
+/* ---------- Equipe (seção atendimento) ---------- */
+.team { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: center; margin-bottom: 48px; }
+.team__photo { margin: 0; position: relative; }
+.team__photo img { width: 100%; height: auto; border-radius: var(--radius-lg); border: 6px solid var(--black); box-shadow: var(--shadow-lg); }
+.team__photo figcaption { margin-top: 12px; font-size: .85rem; font-weight: 600; color: rgba(11,11,12,.75); }
+.team__text h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800; }
+.team__text > p { font-size: 1.05rem; color: rgba(11,11,12,.85); }
+.team__label { font-weight: 800; margin: 24px 0 0; }
+.ticks--onorange { margin: 14px 0 20px; }
+.ticks--onorange li { font-weight: 600; color: var(--black); }
+.ticks--onorange svg { background: var(--black); color: var(--orange); }
+.team__text .team__quote { display: inline-block; margin: 0; background: var(--black); color: var(--white); font-weight: 800; padding: 10px 18px; border-radius: 10px; }
+.cta__quote { font-size: 1.15rem; font-weight: 700; color: var(--orange); margin-top: -4px; }
+@media (max-width: 920px) {
+  .team { grid-template-columns: 1fr; gap: 32px; }
+  .team__photo { max-width: 420px; }
+}

@@ -10,7 +10,8 @@ assets/css/style.css        tokens de design (laranja/branco/preto) e estilos
 assets/js/main.js           menu mobile, animações, máscara de telefone e envio do formulário via WhatsApp
 assets/img/                 símbolo do lobo (SVG colorido, SVG branco para fundo escuro e o PDF original)
 assets/img/instagram/       artes do Instagram otimizadas para a galeria
-fontes/instagram-posts/     originais dos posts (não usados direto pela página)
+assets/img/fotos/           fotos reais (equipe na Exposec)
+fontes/                     originais do Instagram: posts, stories e legendas (não usados direto pela página)
 ```
 
 ## Seções
