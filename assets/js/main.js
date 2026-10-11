@@ -16,6 +16,12 @@ document.querySelectorAll(".js-whats").forEach((a) => {
   a.rel = "noopener";
 });
 
+document.querySelectorAll(".js-whats-moto").forEach((a) => {
+  a.href = whatsUrl("Olá! Vim pelo site e quero saber do plano para moto a partir de R$ 39,90 com bloqueio.");
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+
 // Menu mobile
 const toggle = document.querySelector(".nav-toggle");
 const nav = document.getElementById("nav");

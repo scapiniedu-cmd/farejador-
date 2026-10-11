@@ -460,3 +460,27 @@ mark { background: var(--orange); color: var(--white); padding: 0 .25em; border-
 }
 @media (max-width: 920px) { .ig__grid { scroll-padding-inline: 24px; } }
 @media (max-width: 600px) { .ig__grid { scroll-padding-inline: 16px; } }
+
+/* ---------- Destaque motos ---------- */
+.vehicle { position: relative; }
+.vehicle--moto { border-color: var(--orange); background: var(--orange-100); }
+.vehicle--moto .vehicle__ic { background: var(--orange); color: var(--white); box-shadow: none; }
+.vehicle__badge { position: absolute; top: 14px; right: 14px; background: var(--orange); color: var(--white); font-size: .75rem; font-weight: 800; padding: 4px 10px; border-radius: 99px; }
+.moto-promo { margin-top: 32px; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; padding: 28px 36px; border-radius: var(--radius-lg); background: var(--orange); color: var(--black); }
+.moto-promo .vehicle__ic { margin: 0; background: var(--black); color: var(--orange); box-shadow: none; }
+.moto-promo__tag { display: inline-block; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; background: var(--black); color: var(--white); padding: 4px 10px; border-radius: 99px; margin-bottom: 8px; }
+.moto-promo h3 { font-size: 1.6rem; margin-bottom: 4px; }
+.moto-promo h3 strong { font-size: 2.1rem; font-weight: 800; letter-spacing: -.03em; color: var(--white); text-shadow: 0 2px 0 rgba(0,0,0,.12); }
+.moto-promo p { margin: 0; font-size: .95rem; color: rgba(11,11,12,.8); }
+.price { margin-top: 20px; }
+@media (max-width: 1080px) {
+  .moto-promo { grid-template-columns: auto 1fr; }
+  .moto-promo .btn { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 600px) {
+  .moto-promo { grid-template-columns: 1fr; gap: 16px; padding: 24px 22px; }
+  .moto-promo h3 { font-size: 1.3rem; }
+  .moto-promo h3 strong { font-size: 1.7rem; }
+  .moto-promo .btn { width: 100%; white-space: normal; }
+  .vehicle__badge { top: 10px; right: 10px; font-size: .68rem; }
+}
