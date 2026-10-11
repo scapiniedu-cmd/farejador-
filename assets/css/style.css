@@ -502,3 +502,4 @@ mark { background: var(--orange); color: var(--white); padding: 0 .25em; border-
   .team { grid-template-columns: 1fr; gap: 32px; }
   .team__photo { max-width: 420px; }
 }
+.price__unit { display: block; font-style: normal; font-size: .9rem; font-weight: 600; color: var(--muted-dark); margin-top: 6px; }
