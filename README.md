@@ -18,7 +18,7 @@ Header fixo → Hero com mockup da plataforma → segmentos atendidos → gestã
 ## Antes de publicar
 
 - **WhatsApp:** configurado com o número oficial (43) 9 9864-0294 em `WHATSAPP_NUMBER`, no arquivo `assets/js/main.js`.
-- **Fotos:** as imagens da página são ilustrações em SVG/CSS. Para usar fotos reais, coloque os arquivos em `assets/img/` e substitua os blocos `.dash`, `.cam` e `.phone`.
+- **Fotos:** as artes do Instagram ficam em `assets/img/instagram/` (recorte quadrado, 640 px). As demais imagens da página são ilustrações em SVG/CSS. Para usar fotos reais, coloque os arquivos em `assets/img/` e substitua os blocos `.dash`, `.cam` e `.phone`.
 - **Domínio:** o texto `app.farejador.com.br` no mockup é ilustrativo.
 
 ## Rodar localmente
