@@ -156,6 +156,11 @@
           <h2>Você administra sua frota… ou vive <em>apagando incêndios</em>?</h2>
           <p class="muted">Em muitas empresas, os problemas só aparecem quando já causaram prejuízo: um veículo fora da rota, um motorista improdutivo, custos que aumentam sem explicação, decisões tomadas sem informações confiáveis. Com a Farejador, você transforma informações em decisões inteligentes. Porque uma frota bem gerenciada não gera apenas controle. <strong>Gera resultados.</strong></p>
           <a href="#solucoes" class="link-arrow">Conheça as soluções <svg><use href="#i-arrow"/></svg></a>
+          <figure class="photo photo--wide">
+            <img src="assets/img/fotos/frota-antes-depois.jpg" alt="Gestor de frota antes, preocupado ao telefone, e depois, acompanhando a operação pelo tablet" width="900" height="720" loading="lazy">
+            <span class="photo__tag photo__tag--before">Sem controle</span>
+            <span class="photo__tag photo__tag--after">Com a Farejador</span>
+          </figure>
         </div>
         <ul class="benefits">
           <li><span class="ic"><svg><use href="#i-shield"/></svg></span><div><b>Controle total da operação</b><p>Saiba onde está cada veículo, por onde passou e quem estava ao volante.</p></div></li>
@@ -228,6 +233,9 @@
           <h2>A mesma necessidade: <em>mais segurança!</em></h2>
           <p class="muted">Do carro da família à frota da empresa, a Farejador tem um plano para você.</p>
         </div>
+        <figure class="vehicles__banner">
+          <img src="assets/img/fotos/veiculos-linha.jpg" alt="Moto, carro, caminhão, van e picape lado a lado" width="1122" height="560" loading="lazy">
+        </figure>
         <div class="vehicles">
           <article class="vehicle"><span class="vehicle__ic"><svg><use href="#i-car"/></svg></span><h3>Automóveis</h3><p>Rastreador + bloqueador para o seu carro, com o app na palma da mão.</p></article>
           <article class="vehicle vehicle--moto"><span class="vehicle__badge">R$ 39,90</span><span class="vehicle__ic"><svg><use href="#i-moto"/></svg></span><h3>Motocicletas</h3><p>Proteção sobre duas rodas é com a Farejador! Planos com bloqueio para motos compatíveis.</p></article>
@@ -235,7 +243,7 @@
           <article class="vehicle vehicle--hl"><span class="vehicle__ic"><svg><use href="#i-fleet"/></svg></span><h3>Frotas</h3><p>Nossa especialidade: gestão completa para empresas de 3 a 100 veículos.</p></article>
         </div>
         <div class="moto-promo">
-          <span class="vehicle__ic"><svg><use href="#i-moto"/></svg></span>
+          <img class="moto-promo__img" src="assets/img/fotos/moto.jpg" alt="Moto protegida com rastreador Farejador" width="600" height="551" loading="lazy">
           <div class="moto-promo__text">
             <span class="moto-promo__tag">Destaque para motos</span>
             <h3>Planos a partir de <strong>R$ 39,90</strong> com bloqueio</h3>
@@ -400,7 +408,8 @@
     <!-- ================= APP ================= -->
     <section class="section section--soft">
       <div class="container split split--rev">
-        <div class="phone-wrap">
+        <div class="phone-wrap phone-wrap--photo">
+          <img class="phone-wrap__photo" src="assets/img/fotos/cliente-carro.jpg" alt="Cliente sorrindo encostada no carro, com a chave na mão" width="640" height="800" loading="lazy">
           <div class="phone" aria-label="Ilustração do aplicativo Farejador">
             <div class="phone__notch"></div>
             <div class="phone__screen">
@@ -504,6 +513,10 @@
           <span class="eyebrow">Dúvidas frequentes</span>
           <h2>Perguntas que a gente sempre ouve</h2>
           <p class="muted">Não achou sua dúvida? <a href="#" class="js-whats">Chama a gente no WhatsApp</a>.</p>
+          <a href="#" class="faq__help js-whats">
+            <img src="assets/img/fotos/atendente.jpg" alt="" width="480" height="608" loading="lazy">
+            <span><b>Fale com a nossa equipe</b><small>Atendimento humanizado pelo WhatsApp</small></span>
+          </a>
         </div>
         <div class="faq__list">
           <details>
@@ -559,7 +572,7 @@
         <form class="form" id="lead-form" novalidate>
           <h3>Solicite uma cotação</h3>
           <label>Nome<input name="nome" type="text" autocomplete="name" required placeholder="Seu nome"></label>
-          <label>Empresa <span class="opt">(opcional)</span><input name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa"></label>
+          <label><span>Empresa <span class="opt">(opcional)</span></span><input name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa"></label>
           <label>WhatsApp<input name="whatsapp" type="tel" autocomplete="tel" required placeholder="(00) 00000-0000"></label>
           <label>Quantos veículos você quer rastrear?
             <select name="veiculos" required>
