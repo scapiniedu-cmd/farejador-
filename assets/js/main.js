@@ -2,9 +2,9 @@
 // Farejador — Landing page
 // =========================================================
 
-// TODO: troque pelo número oficial de WhatsApp (DDI + DDD + número, só dígitos).
-const WHATSAPP_NUMBER = "5500000000000";
-const WHATSAPP_DEFAULT_MSG = "Olá! Vim pelo site e quero conhecer as soluções de rastreamento do Farejador.";
+// WhatsApp oficial da Farejador (DDI + DDD + número, só dígitos).
+const WHATSAPP_NUMBER = "5543998640294";
+const WHATSAPP_DEFAULT_MSG = "Olá! Vim pelo site e quero conhecer as soluções de rastreamento da Farejador.";
 
 const whatsUrl = (msg) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -81,8 +81,10 @@ form.addEventListener("submit", (ev) => {
   }
   const d = Object.fromEntries(new FormData(form));
   const msg =
-    `Olá! Quero falar com um especialista do Farejador.\n\n` +
-    `Nome: ${d.nome}\nEmpresa: ${d.empresa}\nWhatsApp: ${d.whatsapp}\n` +
+    `Olá! Quero solicitar uma cotação da Farejador.\n\n` +
+    `Nome: ${d.nome}\n` +
+    (d.empresa.trim() ? `Empresa: ${d.empresa}\n` : "") +
+    `WhatsApp: ${d.whatsapp}\n` +
     `Frota: ${d.veiculos}\nInteresse: ${d.interesse}`;
   note.textContent = "Abrindo o WhatsApp…";
   note.classList.remove("is-error");

@@ -1,6 +1,6 @@
 # Farejador: landing page
 
-Landing page estática (HTML, CSS e JS puro, sem build) do **Farejador**: rastreamento e gestão de frotas com atendimento humanizado para empresas de 3 a 100 veículos.
+Landing page estática (HTML, CSS e JS puro, sem build) da **Farejador**: rastreamento veicular inteligente e gestão de frotas com atendimento humanizado, em Apucarana-PR. Atende carros, motos, caminhões e frotas, com foco em empresas de 3 a 100 veículos.
 
 ## Estrutura
 
@@ -13,11 +13,11 @@ assets/img/                 símbolo do lobo (SVG colorido, SVG branco para fund
 
 ## Seções
 
-Header fixo → Hero com mockup da plataforma → segmentos atendidos → por que rastrear → soluções (localização, motoristas, histórico, roteirização, telemetria, videotelemetria) → videotelemetria em destaque → telemetria e relatórios → atendimento humanizado → como funciona → app → FAQ → formulário de contato → rodapé + botão flutuante de WhatsApp.
+Header fixo → Hero com mockup da plataforma → segmentos atendidos → gestão inteligente da frota → soluções (monitoramento 24h, bloqueio de emergência, localização, motoristas, histórico, roteirização, telemetria, videotelemetria) → tipos de veículo e planos a partir de R$ 59,90 → videotelemetria em destaque → telemetria e relatórios → atendimento humanizado → como funciona → app → FAQ → formulário de contato → rodapé + botão flutuante de WhatsApp.
 
 ## Antes de publicar
 
-- **WhatsApp:** troque `WHATSAPP_NUMBER` em `assets/js/main.js` (DDI + DDD + número, só dígitos).
+- **WhatsApp:** configurado com o número oficial (43) 9 9864-0294 em `WHATSAPP_NUMBER`, no arquivo `assets/js/main.js`.
 - **Fotos:** as imagens da página são ilustrações em SVG/CSS. Para usar fotos reais, coloque os arquivos em `assets/img/` e substitua os blocos `.dash`, `.cam` e `.phone`.
 - **Domínio:** o texto `app.farejador.com.br` no mockup é ilustrativo.
 
