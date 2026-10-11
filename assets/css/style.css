@@ -553,8 +553,9 @@ mark { background: var(--orange); color: var(--white); padding: 0 .25em; border-
 .gains li:first-child { background: var(--orange); }
 .punch { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid var(--orange); background: var(--orange-100); border-radius: 0 12px 12px 0; font-size: 1.08rem; line-height: 1.6; color: var(--text); }
 .punch strong { font-weight: 800; }
-.team__name { position: absolute; bottom: 58px; display: flex; flex-direction: column; background: var(--white); color: var(--muted); font-size: .75rem; font-weight: 600; line-height: 1.25; padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow); }
+.team__frame { position: relative; }
+.team__name { position: absolute; bottom: 18px; display: flex; flex-direction: column; background: var(--white); color: var(--muted); font-size: .75rem; font-weight: 600; line-height: 1.25; padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow); }
 .team__name b { color: var(--black); font-size: .88rem; font-weight: 800; }
 .team__name--left { left: 16px; }
 .team__name--right { right: 16px; text-align: right; }
-@media (max-width: 600px) { .team__name { bottom: 70px; font-size: .68rem; padding: 6px 10px; } .team__name b { font-size: .8rem; } }
+@media (max-width: 600px) { .team__name { bottom: 14px; font-size: .68rem; padding: 6px 10px; } .team__name b { font-size: .8rem; } }
