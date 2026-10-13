@@ -559,3 +559,4 @@ mark { background: var(--orange); color: var(--white); padding: 0 .25em; border-
 .team__name--left { left: 16px; }
 .team__name--right { right: 16px; text-align: right; }
 @media (max-width: 600px) { .team__name { bottom: 14px; font-size: .68rem; padding: 6px 10px; } .team__name b { font-size: .8rem; } }
+.form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }

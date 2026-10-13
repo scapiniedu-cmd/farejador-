@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /fontes/
+Sitemap: https://farejadorapo.com.br/sitemap.xml

@@ -24,6 +24,13 @@ Header fixo → Hero com mockup da plataforma → segmentos atendidos → gestã
 - **Fotos:** a galeria usa 10 artes do Instagram em `assets/img/instagram/` (formato 4:5, 540 × 675 px). Os originais enviados ficam em `fontes/instagram-posts/` e não são carregados pela página. As demais imagens da página são ilustrações em SVG/CSS. Para usar fotos reais, coloque os arquivos em `assets/img/` e substitua os blocos `.dash`, `.cam` e `.phone`.
 - **Domínio:** o texto `app.farejador.com.br` no mockup é ilustrativo.
 
+## Domínio e formulário
+
+- **Domínio:** `farejadorapo.com.br` (arquivo `CNAME`, `robots.txt`, `sitemap.xml` e metatags de compartilhamento já configurados).
+- **Formulário:** cada pedido abre o WhatsApp com a mensagem pronta e também é enviado para **appfarejador@gmail.com** pelo [FormSubmit](https://formsubmit.co).
+  No **primeiro envio**, o FormSubmit manda um e-mail de confirmação para appfarejador@gmail.com. É preciso clicar em **Activate Form** uma única vez para os pedidos começarem a chegar.
+- **Imagem de compartilhamento:** `assets/img/og-farejador.jpg` (aparece quando o link é enviado no WhatsApp ou nas redes).
+
 ## Rodar localmente
 
 Abra `index.html` no navegador ou rode `python3 -m http.server` e acesse http://localhost:8000.

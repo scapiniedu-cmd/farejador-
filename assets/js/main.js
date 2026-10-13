@@ -4,6 +4,8 @@
 
 // WhatsApp oficial da Farejador (DDI + DDD + número, só dígitos).
 const WHATSAPP_NUMBER = "5543998640294";
+// E-mail que recebe os pedidos do formulário (via FormSubmit.co).
+const LEAD_EMAIL = "appfarejador@gmail.com";
 const WHATSAPP_DEFAULT_MSG = "Olá! Vim pelo site e quero conhecer as soluções de rastreamento da Farejador.";
 
 const whatsUrl = (msg) =>
@@ -69,7 +71,26 @@ phone.addEventListener("input", () => {
   phone.value = out;
 });
 
-// Formulário: valida e abre o WhatsApp com a mensagem pronta
+// Envia o pedido por e-mail. Não bloqueia o WhatsApp se falhar.
+const sendLeadEmail = (d) =>
+  fetch(`https://formsubmit.co/ajax/${LEAD_EMAIL}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      _subject: `Novo pedido de cotação pelo site: ${d.nome}`,
+      _template: "table",
+      _captcha: "false",
+      _honey: d._honey,
+      Nome: d.nome,
+      Empresa: d.empresa.trim() || "Não informado",
+      WhatsApp: d.whatsapp,
+      Veículos: d.veiculos,
+      Interesse: d.interesse,
+      Origem: "Site farejadorapo.com.br",
+    }),
+  });
+
+// Formulário: valida, envia por e-mail e abre o WhatsApp com a mensagem pronta
 const form = document.getElementById("lead-form");
 const note = form.querySelector(".form__note");
 form.addEventListener("submit", (ev) => {
@@ -92,9 +113,18 @@ form.addEventListener("submit", (ev) => {
     (d.empresa.trim() ? `Empresa: ${d.empresa}\n` : "") +
     `WhatsApp: ${d.whatsapp}\n` +
     `Frota: ${d.veiculos}\nInteresse: ${d.interesse}`;
-  note.textContent = "Abrindo o WhatsApp…";
   note.classList.remove("is-error");
+  note.textContent = "Enviando seu pedido…";
   window.open(whatsUrl(msg), "_blank", "noopener");
+  sendLeadEmail(d)
+    .then((r) => {
+      if (!r.ok) throw new Error(r.status);
+      note.textContent = "Pedido enviado! Também abrimos o WhatsApp para você falar com a gente.";
+      form.reset();
+    })
+    .catch(() => {
+      note.textContent = "Abrimos o WhatsApp para você enviar seu pedido.";
+    });
 });
 
 document.getElementById("ano").textContent = new Date().getFullYear();
