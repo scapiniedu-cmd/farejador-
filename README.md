@@ -11,7 +11,6 @@ assets/js/main.js           menu mobile, animações, máscara de telefone e env
 assets/img/                 símbolo do lobo (SVG colorido, SVG branco para fundo escuro e o PDF original)
 assets/img/instagram/       artes do Instagram otimizadas para a galeria
 assets/img/fotos/           fotos reais (equipe na Exposec)
-fontes/                     originais do Instagram: posts, stories e legendas (não usados direto pela página)
 ```
 
 ## Seções
@@ -21,7 +20,7 @@ Header fixo → Hero com mockup da plataforma → segmentos atendidos → gestã
 ## Antes de publicar
 
 - **WhatsApp:** configurado com o número oficial (43) 9 9864-0294 em `WHATSAPP_NUMBER`, no arquivo `assets/js/main.js`.
-- **Fotos:** a galeria usa 10 artes do Instagram em `assets/img/instagram/` (formato 4:5, 540 × 675 px). Os originais enviados ficam em `fontes/instagram-posts/` e não são carregados pela página. As demais imagens da página são ilustrações em SVG/CSS. Para usar fotos reais, coloque os arquivos em `assets/img/` e substitua os blocos `.dash`, `.cam` e `.phone`.
+- **Fotos:** a galeria usa 10 artes do Instagram em `assets/img/instagram/` (formato 4:5, 540 × 675 px). Os originais enviados ficam guardados na branch `fontes-instagram`. As demais imagens da página são ilustrações em SVG/CSS. Para usar fotos reais, coloque os arquivos em `assets/img/` e substitua os blocos `.dash`, `.cam` e `.phone`.
 - **Domínio:** o texto `app.farejador.com.br` no mockup é ilustrativo.
 
 ## Domínio e formulário
