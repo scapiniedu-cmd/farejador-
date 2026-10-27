@@ -6,6 +6,9 @@
 const WHATSAPP_NUMBER = "5543998640294";
 // E-mail que recebe os pedidos do formulário (via FormSubmit.co).
 const LEAD_EMAIL = "appfarejador@gmail.com";
+// URL do app da Web do Google Apps Script que grava os pedidos na planilha (CRM).
+// Veja integracoes/google-sheets-leads.gs. Enquanto estiver vazia, a planilha não é usada.
+const SHEETS_URL = "";
 const WHATSAPP_DEFAULT_MSG = "Olá! Vim pelo site e quero conhecer as soluções de rastreamento da Farejador.";
 
 const whatsUrl = (msg) =>
@@ -90,7 +93,26 @@ const sendLeadEmail = (d) =>
     }),
   });
 
-// Formulário: valida, envia por e-mail e abre o WhatsApp com a mensagem pronta
+// Grava o pedido na planilha do Google. O Apps Script não responde a CORS,
+// então o envio é "no-cors" (não dá para ler a resposta).
+const saveLeadSheet = (d) => {
+  if (!SHEETS_URL) return;
+  fetch(SHEETS_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: new URLSearchParams({
+      nome: d.nome,
+      empresa: d.empresa,
+      whatsapp: d.whatsapp,
+      veiculos: d.veiculos,
+      interesse: d.interesse,
+      origem: "Site www.farejadorapp.com.br",
+      _honey: d._honey,
+    }),
+  }).catch(() => {});
+};
+
+// Formulário: valida, envia por e-mail e planilha e abre o WhatsApp com a mensagem pronta
 const form = document.getElementById("lead-form");
 const note = form.querySelector(".form__note");
 form.addEventListener("submit", (ev) => {
@@ -116,6 +138,7 @@ form.addEventListener("submit", (ev) => {
   note.classList.remove("is-error");
   note.textContent = "Enviando seu pedido…";
   window.open(whatsUrl(msg), "_blank", "noopener");
+  saveLeadSheet(d);
   sendLeadEmail(d)
     .then((r) => {
       if (!r.ok) throw new Error(r.status);

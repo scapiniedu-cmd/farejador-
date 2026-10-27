@@ -27,6 +27,7 @@ Header fixo → Hero com mockup da plataforma → segmentos atendidos → gestã
 - **Domínio:** `www.farejadorapp.com.br` (arquivo `CNAME`, `robots.txt`, `sitemap.xml` e metatags de compartilhamento já configurados).
 - **Formulário:** cada pedido abre o WhatsApp com a mensagem pronta e também é enviado para **appfarejador@gmail.com** pelo [FormSubmit](https://formsubmit.co).
   No **primeiro envio**, o FormSubmit manda um e-mail de confirmação para appfarejador@gmail.com. É preciso clicar em **Activate Form** uma única vez para os pedidos começarem a chegar.
+- **Planilha (CRM):** os pedidos também podem ir para uma planilha do Google. O código está em `integracoes/google-sheets-leads.gs`; depois de implantar como App da Web, coloque a URL em `SHEETS_URL` no `assets/js/main.js`.
 - **Imagem de compartilhamento:** `assets/img/og-farejador.jpg` (aparece quando o link é enviado no WhatsApp ou nas redes).
 
 ## Rodar localmente
