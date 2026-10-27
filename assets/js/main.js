@@ -86,7 +86,7 @@ const sendLeadEmail = (d) =>
       WhatsApp: d.whatsapp,
       Veículos: d.veiculos,
       Interesse: d.interesse,
-      Origem: "Site farejadorapo.com.br",
+      Origem: "Site www.farejadorapp.com.br",
     }),
   });
 
